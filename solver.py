@@ -32,4 +32,9 @@ def isValid(board, row, col, value):
                 return False;
     return True;
 
-print(isValid(board, 1, 3, 1))
+def nextSquare(board):
+    for row in range(len(board)):
+        for col in range(len(board[0])):
+            if (board[row][col] == 0):
+                return row, col
+    return -1
