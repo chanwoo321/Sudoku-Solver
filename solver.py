@@ -63,17 +63,22 @@ def solve(board):
 
 
 # Code to run the sudoku puzzle by just running it
-print("Hi, welcome to the sudooku solver! Please enter your puzzle:")
-for x in range(9):
-    line = raw_input('Enter row #' + str(x+1) + ':   ')
-    info = int(line)
-    for y in range(8,-1,-1):
-        board[x][y] = info % 10
-        info /= 10
-print()
-print("Your board:")
-print()
-printBoard(board)
-print()
-print("Solution:")
+firstTime = True
+while (True):
+    if (firstTime):
+        print("Hi, welcome to the sudooku solver! Please enter your puzzle:")
+    else:
+        print("Please reenter your board:")
+    for x in range(9):
+        line = input('Enter row #' + str(x+1) + ':  ')
+        info = int(line)
+        for y in range(8,-1,-1):
+            board[x][y] = info % 10
+            info //= 10
+    print("\nYour board:\n")
+    printBoard(board)
+    check = input(("\nIs this board correct? Type y/n:"))
+    if (check == 'y'):
+        break
+print("\nSolution(s):")
 solve(board)
