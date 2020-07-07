@@ -51,9 +51,9 @@ def solve(board):
     row, col = nextSquare(board)
     if row == -1:
         return True
-    for x in range(1,10):
-        if isValid(board, row, col, x):
-            board[row][col] = x;
+    for value in range(1,10):
+        if isValid(board, row, col, value):
+            board[row][col] = value;
             if solve(board) == False:
                 board[row][col] = 0
             else:
@@ -69,11 +69,11 @@ while (True):
         print("Hi, welcome to the sudooku solver! Please enter your puzzle:")
     else:
         print("Please reenter your board:")
-    for x in range(9):
-        line = input('Enter row #' + str(x+1) + ':  ')
+    for row in range(9):
+        line = input('Enter row #' + str(row+1) + ':  ')
         info = int(line)
-        for y in range(8,-1,-1):
-            board[x][y] = info % 10
+        for col in range(8,-1,-1):
+            board[row][col] = info % 10
             info //= 10
     print("\nYour board:\n")
     printBoard(board)
